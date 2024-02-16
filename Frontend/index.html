@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html>
 <body>
+    <script>
+    var details = {
+        'method': 'getStickerDetails'     
+    };
+    
+    var formBody = [];
+    for (var property in details) {
+      var encodedKey = encodeURIComponent(property);
+      var encodedValue = encodeURIComponent(details[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+    
+    fetch('http://85.209.51.38/dummyApi.php', {
+      method: 'POST',
+      headers: {        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 
-<h1>MEINE ERSTE ÜBERSCHRIFGT</h1>
-<p>My first paragraph.</p>
-<img src="https://www.spd-friesoythe.de/wp-content/uploads/2021/07/1024-1536-1.jpg">
+      },
+      body: formBody
+    })
 
+   .then((response) => response.json())
+    .then((json) => console.log(json));
+</script>
 </body>
 </html> 
