@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
+   <p id="name"></p>
+   <p id="output"></p>
+   <p id="lat"></p>
+   <p id="long"></p>
+   <p id="imageLink"></p>
     <script>
     var details = {
         'method': 'getStickerDetails'     
@@ -22,8 +27,14 @@
     })
 
     .then((response) => response.json())
-    .then((json) => console.log(json.description));
-    <p>Hello World!</p>
-</script>
+    .then((json) => {
+      document.getElementById("output").innerHTML = json.description
+      document.getElementById("name").innerHTML = json.name
+      document.getElementById("lat").innerHTML = json.lat
+      document.getElementById("long").innerHTML = json.long
+      document.getElementById("imageLink").innerHTML = json.imageLink
+    } );
+    
+    </script>
 </body>
 </html> 
