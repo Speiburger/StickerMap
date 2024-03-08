@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
 <body>
-   <p id="name"></p>
-   <p id="output"></p>
-   <p id="lat"></p>
-   <p id="long"></p>
-   <p id="imageLink"></p>
+
+   <table>
+    <tr>
+      <th>name</th>
+      <th>output</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>imageLink</th>
+    </tr>
+    <tr>
+      <td id="name"></td>
+      <td id="output"></td> 
+      <td id="lat"> </td>
+      <td id="long"> </td>
+      <td id="imageLink"> </td>
+     </tr>
+  </table>
     <script>
     var details = {
         'method': 'getStickerDetails'     
@@ -34,7 +50,7 @@
       document.getElementById("long").innerHTML = json.long
       document.getElementById("imageLink").innerHTML = json.imageLink
     } );
-    
+
     </script>
 </body>
 </html> 
