@@ -14,16 +14,16 @@
     }
     formBody = formBody.join("&");
     
-    fetch('http://85.209.51.38/dummyApi.php', {
+    fetch('api.html', {
       method: 'POST',
-      headers: {        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-
+      headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
       },
       body: formBody
     })
 
-   .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then((response) => response.json())
+    .then((json) => console.log(json.description));
+
 </script>
 </body>
 </html> 
