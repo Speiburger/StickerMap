@@ -39,6 +39,7 @@
 	      return myTable;
 
         }
+
         function getFromServer(){
     var details = {
         'method': 'getStickerDetails',
@@ -68,6 +69,7 @@
       document.getElementById("imageLink").innerHTML = json.imageLink
     } );
         }
+        getFromServer();
     </script>
     <div id="hierTabelle"></div>
 </body>
