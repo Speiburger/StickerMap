@@ -32,7 +32,8 @@
           var Daten= new Array ("name", "output", "lat", "long", "imageLink");
           var myTable     = document.createElement("table");
 	        var mytablebody = document.createElement("tbody");
-          for (var i = 0; Daten.length > i; i++) {
+
+        /* for (var i = 0; Daten.length > i; i++) {
 		          currentRow = document.createElement("tr");
 		          currentCell = document.createElement("td");	
 		          currentText = document.createTextNode(i+1 + ". " + Daten[i]);
@@ -40,6 +41,7 @@
 		          currentRow.appendChild(currentCell);
 		          mytablebody.appendChild(currentRow);
 	        }
+          */
         myTable.appendChild(mytablebody);
 	      myTable.setAttribute("border",1);
 	      return myTable;
@@ -60,8 +62,7 @@
     
     fetch('api.html', {
       method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-      },
+      headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
       body: formBody
     })
 
