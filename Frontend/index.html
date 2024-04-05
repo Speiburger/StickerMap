@@ -40,10 +40,11 @@
 
         }
 
-        function getFromServer(){
-    var details = {
+    
+      
+        var details = {
         'method': 'getStickerDetails',
-        'id': '1',     
+        'id': 'p',     
     };
     
     var formBody = [];
@@ -54,12 +55,13 @@
     }
     formBody = formBody.join("&");
     
+    function getFromServer(){
     fetch('http://85.209.51.38/dummyApi.php', {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
       body: formBody
     })
-    
+    }
     .then((response) => response.json())
     .then((json) => {
       document.getElementById("output").innerHTML = json.description
@@ -68,8 +70,12 @@
       document.getElementById("long").innerHTML = json.long
       document.getElementById("imageLink").innerHTML = json.imageLink
     } );
+  
+        
+    for(let i = 0; i <2; i++){
+      getFromServer();
+     
         }
-        getFromServer();
     </script>
     <div id="hierTabelle"></div>
 </body>
