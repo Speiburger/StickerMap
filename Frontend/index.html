@@ -5,6 +5,7 @@
 
 </head>
 <body>
+  <div id="hierTabelle"></div>
 
    <table  style="table-layout: fixed; width:1800px;" border="1px">
     <tr>
@@ -23,6 +24,7 @@
      </tr>
   </table>
     <script>
+
         function start() {
           node = document.getElementById("hierTabelle");
           node.appendChild(createTable());
@@ -32,22 +34,19 @@
           var Daten= new Array ("name", "output", "lat", "long", "imageLink");
           var myTable     = document.createElement("table");
 	        var mytablebody = document.createElement("tbody");
-
-        
-        myTable.appendChild(mytablebody);
-	      myTable.setAttribute("border",1);
-	      return myTable;
-
+          myTable.appendChild(mytablebody);
+	        myTable.setAttribute("border",1);
+          myTable.setAttribute("id","tabelle");
+	        return myTable;
         }
 
-    
-      
         var details = {
-        'method': 'getStickerDetails',
-        'id': 'p',     
-    };
+          'method': 'getStickerDetails',
+          'id': 'p',     
+        };
     
     var formBody = [];
+
     for (var property in details) {
       var encodedKey = encodeURIComponent(property);
       var encodedValue = encodeURIComponent(details[property]);
@@ -56,11 +55,12 @@
     formBody = formBody.join("&");
     
     function getFromServer(){
-    fetch('http://85.209.51.38/dummyApi.php', {
+      console.log("penis");
+      fetch('http://85.209.51.38/dummyApi.php', {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
       body: formBody
-    })
+      })
     
     .then((response) => response.json())
     .then((json) => {
@@ -72,11 +72,19 @@
     } );
     }
         
-    for(let i = 0; i <2; i++){
-      getFromServer();
-     
-        }
+    function zeileEinfuegen () {
+     const tabelle = document.getElementById('tabelle');	  
+     getFromServer();
+     const reihe = tabelle.insertRow(0);
+     for (var i = 0; i < 7; i++) {
+        let inhalt = 'Zelle ' + (i+1),
+        zelle = reihe.insertCell();
+        zelle.innerHTML = inhalt;	
+     }
+    }
+
+    start();
+    zeileEinfuegen();
     </script>
-    <div id="hierTabelle"></div>
 </body>
 </html> 
