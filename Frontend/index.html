@@ -5,25 +5,15 @@
 
 </head>
 <body>
+   
   <div id="table-container"></div>
-
    
     <script>
-
+        
         function start() {
           node = document.getElementById("hierTabelle");
-          node.appendChild(createTable());
+          node.appendChild(generateTable());
         }
-
-       /* function createTable() {
-          var Daten= new Array ("name", "output", "lat", "long", "imageLink");
-          var myTable     = document.createElement("table");
-	        var mytablebody = document.createElement("tbody");
-          myTable.appendChild(mytablebody);
-	        myTable.setAttribute("border",1);
-          myTable.setAttribute("id","tabelle");
-	        return myTable;
-        } */
 
         var details = {
           'method': 'getStickerDetails',
@@ -57,28 +47,30 @@
     } );
     }
         
-    /*function zeileEinfuegen () {
-     const tabelle = document.getElementById('tabelle');	  
-     getFromServer();
-     const reihe = tabelle.insertRow(0);
-     for (var i = 0; i < 7; i++) {
-        let inhalt = 'Zelle ' + (i+1),
-        zelle = reihe.insertCell();
-        zelle.innerHTML = inhalt;	
-     }
-    } */
+    
 
-    function generateTable(details) {  
+    function generateTable() {  
+      try {  
+      const response = fetch('http://85.209.51.38/dummyApi.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body: formBody
+      });  
+      const data =  getFromServer();  
       let table = '<table>';  
       table += '<tr><th>name</th><th>output</th><th>lat</th><th>long</th><th>imageLink</th></tr>';  
       data.forEach(item => {  
         table += `<tr><td>${item.name}</td><td>${item.output}</td><td>${item.lat}</td><td>${item.long}</td><td>${item.imageLink}</td></tr>`;  
       });  
       table += '</table>';  
-      return table;  
-    }  
-    gconsttableContainer = document.getElementById('table-container');  
-    tableContainer.innerHTML = generateTable(details);  
+      consttableContainer = document.getElementById('table-container');  
+      tabletableContainer.innerHTML = table;  
+      //return table;
+      } catch  {  
+        return false;
+      }  
+    } 
+    generateTable(); 
     </script>
 </body>
 </html> 
