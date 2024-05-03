@@ -5,24 +5,9 @@
 
 </head>
 <body>
-  <div id="hierTabelle"></div>
+  <div id="table-container"></div>
 
-   <table  style="table-layout: fixed; width:1800px;" border="1px">
-    <tr>
-      <th>name</th>
-      <th>output</th>
-      <th>lat</th>
-      <th>long</th>
-      <th>imageLink</th>
-    </tr>
-    <tr>
-      <td id="name"></td>
-      <td id="output"></td> 
-      <td id="lat"> </td>
-      <td id="long"> </td>
-      <td id="imageLink"> </td>
-     </tr>
-  </table>
+   
     <script>
 
         function start() {
@@ -30,7 +15,7 @@
           node.appendChild(createTable());
         }
 
-        function createTable() {
+       /* function createTable() {
           var Daten= new Array ("name", "output", "lat", "long", "imageLink");
           var myTable     = document.createElement("table");
 	        var mytablebody = document.createElement("tbody");
@@ -38,7 +23,7 @@
 	        myTable.setAttribute("border",1);
           myTable.setAttribute("id","tabelle");
 	        return myTable;
-        }
+        } */
 
         var details = {
           'method': 'getStickerDetails',
@@ -72,7 +57,7 @@
     } );
     }
         
-    function zeileEinfuegen () {
+    /*function zeileEinfuegen () {
      const tabelle = document.getElementById('tabelle');	  
      getFromServer();
      const reihe = tabelle.insertRow(0);
@@ -81,10 +66,19 @@
         zelle = reihe.insertCell();
         zelle.innerHTML = inhalt;	
      }
-    }
+    } */
 
-    start();
-    zeileEinfuegen();
+    function generateTable(details) {  
+      let table = '<table>';  
+      table += '<tr><th>name</th><th>output</th><th>lat</th><th>long</th><th>imageLink</th></tr>';  
+      data.forEach(item => {  
+        table += `<tr><td>${item.name}</td><td>${item.output}</td><td>${item.lat}</td><td>${item.long}</td><td>${item.imageLink}</td></tr>`;  
+      });  
+      table += '</table>';  
+      return table;  
+    }  
+    gconsttableContainer = document.getElementById('table-container');  
+    tableContainer.innerHTML = generateTable(details);  
     </script>
 </body>
 </html> 
