@@ -1,2 +1,6 @@
 <?php
-// Empty for now
+namespace StickerApi;
+
+class Config {
+    const DATABASE_PATH = "db/mainDatabase.db";
+} 
