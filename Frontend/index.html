@@ -7,13 +7,32 @@
 <body>
    
   <div id="table-container"></div>
+  <div id="hierTabelle"></div>
    
     <script>
         
-        function start() {
-          node = document.getElementById("hierTabelle");
-          node.appendChild(generateTable());
+       // function start() {
+         // node = document.getElementById("hierTabelle");
+          //node.appendChild(generateTable());
+          //var node = document.getElementById("hierTabelle").firstChild; 
+         //document.appendChild(node); 
+       // }
+        
+        function listeErstellen(){
+          var element = document.getElementById('hierTabelle');
+          while (element.firstChild) {
+	        element.removeChild(element.firstChild);
         }
+
+        for (var i = 0; i < 100; i++) {
+            var newLI = document.createElement('li');
+            var liNummer = i + 1;
+            var newLIText = document.createTextNode('Das ist Listeneintrag Nummer ' + liNummer);
+            newLI.appendChild(newLIText);
+            element.appendChild(newLI);
+        }
+      }
+
 
         var details = {
           'method': 'getStickerDetails',
@@ -65,12 +84,14 @@
       table += '</table>';  
       consttableContainer = document.getElementById('table-container');  
       tabletableContainer.innerHTML = table;  
-      //return table;
-      } catch  {  
+      return table;
+      } 
+      catch {  
         return false;
       }  
     } 
-    generateTable(); 
+    generateTable();
+    listeErstellen(); 
     </script>
 </body>
 </html> 
